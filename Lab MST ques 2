@@ -1,0 +1,49 @@
+import java.util.*;
+class EmployeeNotFoundException extends Exception {
+    public EmployeeNotFoundException(String message) {
+        super(message);
+    }
+}
+
+public class EmployeeMap {
+    private HashMap<Integer, String> employees;
+
+    public EmployeeMap() {
+        employees = new HashMap<>();
+    }
+    public void addEmployee(int id, String name) {
+        employees.put(id, name);
+    }
+    public String getEmployeeName(int id) throws EmployeeNotFoundException {
+        if (!employees.containsKey(id)) {
+            throw new EmployeeNotFoundException("Error: Employee ID not found!");
+        }
+        return employees.get(id);
+    }
+    public void displayEmployees() {
+        for (Integer id : employees.keySet()) {   // for-each over keys
+            System.out.println(id + ": " + employees.get(id));
+        }
+    }
+
+    public static void main(String[] args) {
+        EmployeeMap map = new EmployeeMap();
+
+        System.out.println("Adding employees...");
+        map.addEmployee(101, "John");
+        map.addEmployee(102, "Jane");
+        map.addEmployee(103, "Mike");
+
+        System.out.println("Employee Map: " + map.employees);
+
+        try {
+            System.out.println("Name for ID 102: " + map.getEmployeeName(102));
+            System.out.println("Name for ID 999: " + map.getEmployeeName(999));
+        } catch (EmployeeNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("\nAll Employees:");
+        map.displayEmployees();
+    }
+}
