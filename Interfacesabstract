@@ -1,0 +1,13 @@
+Abstract Class:
+It can have both abstract and normal methods.
+It can store data using variables and can also have a constructor.
+A class can extend only one abstract class.
+Methods inside it can be public, protected or private.
+It is used when different classes share some common features or code.
+
+Interface:
+It mainly contains abstract methods.
+It cannot store normal variables — only constants.
+A class can implement multiple interfaces at the same time.
+All abstract methods inside an interface are always public.
+It is used when you want to define a common behavior that many different classes should follow.
